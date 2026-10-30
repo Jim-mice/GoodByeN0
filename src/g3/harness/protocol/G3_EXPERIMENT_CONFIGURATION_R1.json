@@ -1,0 +1,30 @@
+{
+  "schema": "N0_G3_EXPERIMENT_CONFIGURATION_R4",
+  "state": "STAGED_NOT_FORMALLY_STARTED",
+  "group": "G3",
+  "hardware_information": "FULL",
+  "profile_information": "FULL",
+  "expert_knowledge": "ABSENT",
+  "task_id": "KB_L1_40_LAYERNORM",
+  "workers": 10,
+  "episodes_per_worker": 1,
+  "max_logical_candidates_per_episode": 30,
+  "worker_runtime_entrypoint": "n0_autonomous/g3_worker_runtime.py",
+  "worker_runtime_command": "python -m n0_autonomous.g3_worker_runtime",
+  "seed_candidate_id": "C0000",
+  "agent_candidate_ids": ["C0001", "C0030"],
+  "model_visible_tools": [
+    "read_workspace_file",
+    "edit_candidate",
+    "query_candidate_history",
+    "query_hardware_skill"
+  ],
+  "profile_delivery": "query_candidate_history(fields includes profile); only prior Candidate; validated Profile Receipt SHA and OJ binding",
+  "reference_gate": {
+    "baseline": "FROZEN_PARENT_REFERENCE",
+    "max_deviation_percent": 2.0,
+    "consecutive_full_controls": 3,
+    "terminated_tree_required": true
+  },
+  "formal_start": false
+}

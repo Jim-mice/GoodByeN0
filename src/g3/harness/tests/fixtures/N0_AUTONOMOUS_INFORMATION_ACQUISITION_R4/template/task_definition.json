@@ -1,0 +1,15 @@
+{
+  "task_id": "KB_L1_40_LAYERNORM",
+  "task_sha256": "8D975D7CEE6946513DCFB6BA84C971E53A890F9D9C6F0A4FB828904941F25975",
+  "kernelbench_commit": "423217d9fda91e0c2d67e4a43bf62f96f6d104f1",
+  "input_shape": [16, 64, 256, 256],
+  "dtype": "float32",
+  "normalized_shape": [64, 256, 256],
+  "normalized_elements_per_sample": 4194304,
+  "epsilon": 0.00001,
+  "variance": "population variance; denominator N",
+  "affine": "fixed wrapper supplies FP32 weight=1 and bias=0 tensors with shape [64,256,256]",
+  "output_shape": [16, 64, 256, 256],
+  "delivery": "candidate.cu implements all numerical LayerNorm computation through N0_LAYERNORM_EXTENSION_ABI_V1; fixed Python ModelNew wrapper is controller-owned",
+  "evaluation_alignment": "KernelBench-derived; CUDA-only ABI adaptation. No claim of equivalence to arbitrary official Python candidates."
+}

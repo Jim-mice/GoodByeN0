@@ -1,0 +1,37 @@
+{
+  "tool_choice": "auto",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "read_workspace_file",
+        "description": "Optional read of one allowlisted file in this Episode workspace. Input: path. Returns exactly {path:string, content:string, sha256:string, bytes:integer}, where content is the file's actual UTF-8 text, sha256 is its full SHA256, and bytes is its UTF-8 byte length. Allowed paths: task_definition.json, candidate.cu, candidate_abi.json, visible_observation.json. Only this Episode is accessible. The task, ABI, current source and latest observation are already included in mandatory context; this tool is optional for rereading them.",
+        "parameters": {"type":"object","properties":{"path":{"type":"string","enum":["task_definition.json","candidate.cu","candidate_abi.json","visible_observation.json"]}},"required":["path"],"additionalProperties":false}
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "edit_candidate",
+        "description": "Create an immutable working version of candidate.cu. Inputs: expected_sha256 is the full SHA256 of the current source; source is the complete replacement CUDA C++ source. Returns exactly {status,path,before_sha256,after_sha256,bytes,edit_version,version_artifact}. Multiple edits are allowed and each successful edit has a new full SHA256; use the returned after_sha256 next. Intermediate edits are not evaluated. A final CONTINUE submits at most the final current source once. STOP does not submit or evaluate intermediate source.",
+        "parameters": {"type":"object","properties":{"expected_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"source":{"type":"string"}},"required":["expected_sha256","source"],"additionalProperties":false}
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "query_candidate_history",
+        "description": "Query 1 to 4 Candidate IDs from this Episode. Inputs: candidate_ids is an array of 1-4 IDs; fields is a nonempty array selected from source, evaluation, timing, profile, diagnostics, lineage; page_token is optional. The default result envelope is {status,snapshot_sha256,object_sha256,total_bytes,data}; data contains episode_id, candidate_ids, fields and records. Each record contains only explicitly requested fields plus identity metadata. source is original submitted CUDA C++ and full source SHA; evaluation is trusted verdict, score (or null), promotion and status; timing is original Candidate/Reference timing; profile is original profiler data filtered only by the frozen whitelist; diagnostics is original compile/correctness/runtime diagnostics; lineage is Parent SHA and submission relationship. R5 has no default result-byte cap and returns the full requested object. Snapshot-bound pagination is available only when an explicit pagination cap is configured; pages carry object and page hashes. Repeated queries, including the same IDs and fields, are allowed and return the requested data again. No comparisons or recommendations are generated.",
+        "parameters": {"type":"object","properties":{"candidate_ids":{"type":"array","minItems":1,"maxItems":4,"items":{"type":"string","pattern":"^C[0-9]{4}$"}},"fields":{"type":"array","minItems":1,"items":{"type":"string","enum":["source","evaluation","timing","profile","diagnostics","lineage"]}},"page_token":{"type":"string"}},"required":["candidate_ids","fields"],"additionalProperties":false}
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "query_hardware_skill",
+        "description": "Optional lookup in the frozen hardware knowledge asset by query text or stable knowledge ID. Returns {status,snapshot_sha256,object_sha256,total_bytes,data}; data contains query/status and matching original facts with knowledge_id, applicability, source and content SHA. R5 has no default result-byte cap and returns the complete selected result. Snapshot-bound pagination is available only when an explicit pagination cap is configured. The tool does not call another model and does not generate explanations or recommendations.",
+        "parameters": {"type":"object","properties":{"query":{"type":"string","minLength":1,"maxLength":500},"page_token":{"type":"string"}},"required":["query"],"additionalProperties":false}
+      }
+    }
+  ]
+}

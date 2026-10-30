@@ -1,0 +1,5 @@
+-r requirements/offline.txt
+-r requirements/tests.txt
+
+# GPU execution additionally needs a separately provisioned, compatible PyTorch/CUDA/Nsight Compute environment.
+# Those system components are intentionally not bundled or claimed to be reproducible by this file.

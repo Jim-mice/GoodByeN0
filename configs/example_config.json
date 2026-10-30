@@ -1,0 +1,16 @@
+{
+  "provider": {
+    "base_url": "https://llmapi.paratera.com/v1",
+    "model": "DeepSeek-V4-Pro-0813",
+    "api_key_env": "N0_PROVIDER_API_KEY"
+  },
+  "runtime": {
+    "mode": "archive_only",
+    "run_id": "",
+    "formal_start_enabled": false
+  },
+  "gpu": {
+    "device": "configure_locally",
+    "ncu_path": "configure_locally"
+  }
+}

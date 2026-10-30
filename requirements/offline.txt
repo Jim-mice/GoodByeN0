@@ -1,0 +1,6 @@
+# Offline preflight requirements only. The D runtime venv is the execution environment.
+numpy==2.4.6
+pip==24.0
+setuptools==79.0.1
+# Python standard library: unittest, ast, json, hashlib, pathlib, subprocess
+# Formal GPU qualification dependency/runtime lock is intentionally NOT frozen here.

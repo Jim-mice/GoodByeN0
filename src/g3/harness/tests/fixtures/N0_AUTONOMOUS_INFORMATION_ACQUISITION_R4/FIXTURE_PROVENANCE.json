@@ -1,0 +1,12 @@
+{
+  "fixture_only": true,
+  "source_template": "D:\\projects\\kernelagent\\episodes\\N0_AUTONOMOUS_INFORMATION_ACQUISITION_R4\\template",
+  "source_files": {
+    "task_definition.json": "3F0EB778C8F6673F1B6589060742CAF56FD21AB57A9DA48C9DECFED79E198709",
+    "candidate_abi.json": "0CF501CE318FED629583987BA9085EC19188EACF606490D555249BA0610BFEAB",
+    "candidate.cu": "CBD7E93B47AD3957E4E133BDE45C0AF1E933DD9BEC3525C27637049337FB2D91",
+    "visible_observation.json": "C324F61E3EAFE986267D2224372D6D017570215F73526CEA3C52BA114A069B1A"
+  },
+  "synthetic_oj_manifest_sha256": "1F247C927EF3EB31F13B12F045C67C97D22A93664DAC75D87249E7EB24326CA7",
+  "note": "Copied exact R4 template bytes; synthetic OJ manifest is a stable test input only. No OJ code or live release was copied or changed."
+}

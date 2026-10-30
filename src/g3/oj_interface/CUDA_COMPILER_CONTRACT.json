@@ -1,0 +1,78 @@
+{
+  "contract_id": "N0_CUDA_COMPILER_CONTRACT_V1",
+  "status": "FROZEN_PENDING_QUALIFICATION",
+  "toolkit": {
+    "version": "13.4",
+    "nvcc_version": "V13.4.59",
+    "ptxas_version": "V13.4.59",
+    "nvcc_path": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin\\nvcc.exe",
+    "nvcc_sha256": "187F3D386C014D79D8F1F72C779C316758BC89E97E47D7B86994F35404B8C0C1",
+    "ptxas_sha256": "462442E14A78D62E9165926E9AE75D4D8DBC5D9DB2D4130F36F08E9AEAA0E0D5"
+  },
+  "host_compiler": {
+    "identity": "MSVC 19.51.36252 / toolset 14.51.36231 (Visual Studio 2026 18.x)",
+    "path": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\cl.exe",
+    "sha256": "C94CDAC6A780142920110E5CB8B7339817029EEAD696E0E97700B45E03216A00",
+    "linker_path": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe",
+    "linker_sha256": "F233B8E337CEC96A69868A8CDE676808BFA81152493968D0B27B7CD0DAAC15BE",
+    "host_binding_standard": "/std:c++20 (PyTorch 2.14 extension headers)",
+    "candidate_cuda_standard": "-std=c++17 (last effective NVCC standard flag)",
+    "nvcc_compile_only_status": "PASS_WITH_C4819_TOOLKIT_HEADER_WARNINGS"
+  },
+  "python_torch": {
+    "python": "3.11.15",
+    "environment": "D:\\projects\\kernelagent\\runtime\\.venv_n0_r6",
+    "torch": "2.14.1+cu132",
+    "torch_cuda_runtime": "13.2",
+    "status": "GPU_TENSOR_SMOKE_PASS_EXTENSION_QUALIFICATION_IN_PROGRESS"
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "compute_capability": "12.0",
+    "target": "sm_120",
+    "identity": "GPU-15840d68-8974-35a8-6886-d7a36fb0a04d"
+  },
+  "performance_flags": [
+    "-O3",
+    "-std=c++17",
+    "-gencode=arch=compute_120,code=sm_120",
+    "--ftz=false",
+    "--prec-div=true",
+    "--prec-sqrt=true",
+    "--fmad=true"
+  ],
+  "diagnostic_flags": [
+    "-O3",
+    "-std=c++17",
+    "-gencode=arch=compute_120,code=sm_120",
+    "--ftz=false",
+    "--prec-div=true",
+    "--prec-sqrt=true",
+    "--fmad=true",
+    "-lineinfo"
+  ],
+  "forbidden_flags": [
+    "--use_fast_math",
+    "-G",
+    "--maxrregcount"
+  ],
+  "candidate_controlled_flags": false,
+  "environment_policy": "Compiler and build environment variables are controller-owned, sanitized, captured, and hashed. Candidate source cannot provide scripts, NVRTC, or build arguments.",
+  "seed_compile_only_command_sha256": "F51DE5671E759080A9224AE7372A9EA552AE5F824961E7C06EA37EBE1A5D85EE",
+  "seed_compile_command_evidence": "qualification/SEED_COMPILE_ONLY.json (seed source compile-only command, exit code 0; no GPU execution)",
+  "extension_compile_host_flags": [
+    "/O2",
+    "/std:c++20"
+  ],
+  "extension_compile_cuda_flags": [
+    "-O3",
+    "-std=c++17",
+    "-gencode=arch=compute_120,code=sm_120",
+    "--ftz=false",
+    "--prec-div=true",
+    "--prec-sqrt=true",
+    "--fmad=true"
+  ],
+  "lineinfo_policy": "Omitted from performance build; fixed diagnostic build only. No mixed Candidate build policy is allowed within an Episode.",
+  "qualification_note": "The installed PyTorch extension headers require the pinned host binding standard /std:c++20. Candidate CUDA source remains fixed at -std=c++17. Full-shape non-scientific build and correctness passed on the recorded RTX 5060; timing qualification remains HOLD."
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "N0_FINAL_CONTROL_V1",
+  "type": "object",
+  "properties": {
+    "decision": {"type":"string","enum":["CONTINUE","STOP"]},
+    "reason": {"type":"string","minLength":1,"maxLength":1000},
+    "working_note": {"type":["string","null"],"maxLength":1000}
+  },
+  "required": ["decision","reason"],
+  "additionalProperties": false
+}

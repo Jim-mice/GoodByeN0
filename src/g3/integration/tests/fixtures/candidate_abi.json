@@ -1,0 +1,16 @@
+{
+  "abi_id": "N0_LAYERNORM_EXTENSION_ABI_V1",
+  "oj_release_id": "N0_KERNELBENCH_L1_40_LAYERNORM_R2_CUDA_ONLY",
+  "oj_manifest_sha256": "FF8B5F69DC622A16A998A56EC29D8ED8157EEBC3CD568CD528C05CFB68E8ADED",
+  "compiler_contract_sha256": "303AF7065B56C8A29ED370391681F06C1F31EF5066632D82B7141BF0AEB9C1FA",
+  "wrapper_sha256": "102CA9489A0E5B4AD186F6F1A75F9B86EF1EBFC051668D81590134053E0AA0C9",
+  "binding_sha256": "4A55254F6B1D626DDD9B6263E3619270FB8526D8E4E3B524E92EC7FCD93CDCDF",
+  "candidate_file": "candidate.cu",
+  "entrypoints": [
+    "extern C size_t n0_workspace_bytes(int64_t batch, int64_t features)",
+    "extern C void n0_layernorm_forward(const float* x, const float* weight, const float* bias, float* y, void* workspace, size_t workspace_bytes, cudaStream_t stream, int64_t batch, int64_t features, float eps)"
+  ],
+  "workspace": "Candidate returns required scratch bytes; fixed wrapper allocates contiguous uint8 CUDA storage capped at 1 GiB.",
+  "multi_kernel": "allowed",
+  "launch_policy": "Every candidate kernel launch in forward must use the supplied current CUDA stream so KernelBench CUDA-event timing encloses all candidate GPU work. Creating or launching on independent streams is not allowed by this evaluation ABI."
+}
